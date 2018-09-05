@@ -1,9 +1,13 @@
 import React from 'react';
 
-import Home from './Home/Home';
+import Home from './Home';
+import ApiContext from './ApiContext';
+import client from './client';
 
 const App = () => (
-    <Home />
+    <ApiContext.Provider value={client}>
+        <Home />
+    </ApiContext.Provider>
 );
 
 export default App;
