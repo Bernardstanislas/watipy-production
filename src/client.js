@@ -1,8 +1,8 @@
 import Client from 'shopify-buy';
 
 const client = Client.buildClient({
-    domain: 'watipy.myshopify.com',
-    storefrontAccessToken: 'ab092d1b47beae0d29511ed79556edb2'
+    domain: `${process.env.REACT_APP_SHOPIFY_DOMAIN}.myshopify.com`,
+    storefrontAccessToken: process.env.REACT_APP_STOREFRONT_ACCESS_TOKEN
 });
 
 export default client;
