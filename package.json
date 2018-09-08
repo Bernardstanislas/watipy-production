@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "https://www.watipy.com",
   "dependencies": {
+    "mobx": "5.1.0",
+    "mobx-react": "5.2.6",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-scripts": "1.1.5",
@@ -11,16 +13,18 @@
     "styled-components": "3.4.5"
   },
   "scripts": {
-    "start": "cp .env.dev .env && react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
+    "start": "cp .env.dev .env && react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-app-rewired eject",
     "predeploy": "cp .env.dev .env && echo \"staging.watipy.com\" > public/CNAME && npm run build",
     "deploy": "gh-pages -d build",
     "predeploy-prod": "cp .env.prod .env && echo \"www.watipy.com\" > public/CNAME && npm run build",
     "deploy-prod": "gh-pages -d build -r git@github.com:Bernardstanislas/watipy.git"
   },
   "devDependencies": {
-    "gh-pages": "^1.2.0"
+    "gh-pages": "^1.2.0",
+    "react-app-rewire-mobx": "^1.0.8",
+    "react-app-rewired": "^1.6.2"
   }
 }

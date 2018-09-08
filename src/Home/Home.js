@@ -10,17 +10,22 @@ const colors = [
     { backgroundColor: '#ffffff', textColor: '#594e4e' }
 ];
 
-const Home = ({ collections = [] }) => (
-    <StyledHome>
-        <Logo />
-        {collections.map((collection, index) => (
-            <Category
-                title={collection.title.toUpperCase()}
-                backgroundColor={colors[index].backgroundColor}
-                textColor={colors[index].textColor}
-            />
-        ))}
-    </StyledHome>
-);
+export default class Home extends React.PureComponent {
+    render() {
+        const { collections } = this.props;
 
-export default Home;
+        return (
+            <StyledHome>
+                <Logo/>
+                {collections.map((collection, index) => (
+                    <Category
+                        title={collection.title.toUpperCase()}
+                        key={collection.title}
+                        backgroundColor={colors[index].backgroundColor}
+                        textColor={colors[index].textColor}
+                    />
+                ))}
+            </StyledHome>
+        );
+    }
+}

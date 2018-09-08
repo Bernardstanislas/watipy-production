@@ -1,13 +1,13 @@
 import React from 'react';
+import { Provider } from 'mobx-react';
 
 import Home from './Home';
-import ApiContext from './ApiContext';
-import client from './client';
+import collectionStore from 'stores/collection.store';
 
 const App = () => (
-    <ApiContext.Provider value={client}>
+    <Provider collectionStore={collectionStore}>
         <Home />
-    </ApiContext.Provider>
+    </Provider>
 );
 
 export default App;

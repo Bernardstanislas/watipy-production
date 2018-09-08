@@ -1,33 +1,19 @@
 import React, { Component } from 'react';
+import { inject, observer } from 'mobx-react';
 
-import ApiContext from '../ApiContext';
 import Home from "./Home";
 
+@inject('collectionStore')
+@observer
 class HomeContainer extends Component {
-    state = {
-        collections: []
-    };
-
-    componentDidMount() {
-        const { client } = this.props;
-        client.collection.fetchAll()
-            .then(collections => {
-                this.setState({
-                    collections
-                });
-            });
+    componentWillMount() {
+        this.props.collectionStore.fetchAll();
     }
 
     render() {
-        const { collections } = this.state;
-        return (
-            <Home collections={collections} />
-        );
+        const { collectionStore, ...otherProps } = this.props;
+        return <Home {...otherProps} collections={collectionStore.collections} />;
     }
 }
 
-export default (props) => (
-    <ApiContext.Consumer>
-        {client => <HomeContainer {...props} client={client} />}
-    </ApiContext.Consumer>
-);
+export default HomeContainer;
