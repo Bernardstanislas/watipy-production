@@ -18,8 +18,12 @@ jobs:
         name: Run Test and Coverage
         command: |
           npm test -- --coverage
+    - store_artifacts:
+        path: /coverage
+    - store_test_results:
+        path: /coverage
 
-  deploy:
+  deploy-staging:
     docker:
     - image: circleci/node:8
     steps:
