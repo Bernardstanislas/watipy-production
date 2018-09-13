@@ -1,8 +1,10 @@
 const ghpages = require('gh-pages');
 
-ghpages.publish('dist', {
+ghpages.publish('build', {
     user: {
         name: 'CircleCI',
         email: 'circle@ci.com'
     }
-}, function(err) {});
+}, function(err) {
+    console.error(err);
+});
