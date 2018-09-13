@@ -15,7 +15,7 @@
   "scripts": {
     "start": "cp .env.dev .env && react-app-rewired start",
     "build": "react-app-rewired build",
-    "test": "react-app-rewired test --env=jsdom",
+    "test": "jest --env=jsdom",
     "eject": "react-app-rewired eject",
     "predeploy": "cp .env.dev .env && echo \"staging.watipy.com\" > public/CNAME && npm run build",
     "deploy": "gh-pages -d build",
@@ -23,8 +23,24 @@
     "deploy-prod": "gh-pages -d build -r git@github.com:Bernardstanislas/watipy.git"
   },
   "devDependencies": {
+    "babel-jest": "21.2.0",
+    "babel-preset-es2015": "6.24.1",
+    "babel-preset-react": "6.24.1",
     "gh-pages": "^1.2.0",
     "react-app-rewire-mobx": "^1.0.8",
-    "react-app-rewired": "^1.6.2"
+    "react-app-rewired": "^1.6.2",
+    "webpack-babel-jest": "1.0.4"
+  },
+  "jest": {
+    "rootDir": ".",
+    "testMatch": [
+      "**/*test.js?(x)"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|jpg|png|svg)$": "<rootDir>/test/empty-module.js"
+    },
+    "transform": {
+      ".*": "<rootDir>/node_modules/webpack-babel-jest"
+    }
   }
 }
